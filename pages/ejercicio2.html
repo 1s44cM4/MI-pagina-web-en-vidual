@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Calculadora de Factorial</title>
+    <style>
+        body {
+            background-color: #e6f7ff; /* Fondo azul claro */
+            font-family: Arial, sans-serif;
+            color: #333;
+            text-align: center;
+        }
+        
+        h1 {
+            color: #1e90ff;
+        }
+
+        .container {
+            background-color: #1e90ff;
+            color: #fff;
+            padding: 20px;
+            border-radius: 8px;
+            display: inline-block;
+            margin-top: 20px;
+            width: 300px;
+        }
+
+        input[type="number"] {
+            padding: 10px;
+            border: 1px solid #1e90ff;
+            border-radius: 5px;
+            width: 90%;
+            margin-bottom: 10px;
+            color: #333;
+        }
+
+        button {
+            padding: 10px 20px;
+            background-color: #fff;
+            color: #1e90ff;
+            border: 2px solid #1e90ff;
+            border-radius: 5px;
+            cursor: pointer;
+            font-weight: bold;
+        }
+
+        button:hover {
+            background-color: #1e90ff;
+            color: #fff;
+        }
+
+        .result {
+            font-size: 1.2em;
+            margin-top: 15px;
+        }
+    </style>
+</head>
+<body>
+    <h1>Calculadora de Factorial</h1>
+    <div class="container">
+        <input type="number" id="inputNumero" placeholder="Ingresa un número" min="0">
+        <button onclick="calcularFactorial()">Calcular Factorial</button>
+        <div class="result" id="resultado"></div>
+    </div>
+    <div class="back-button">
+        <button onclick="history.back()">Regresar</button>
+    </div>
+
+
+    <script>
+        function calcularFactorial() {
+            const numero = parseInt(document.getElementById('inputNumero').value);
+            
+            if (isNaN(numero) || numero < 0) {
+                document.getElementById('resultado').innerText = "Por favor ingresa un número válido no negativo.";
+                return;
+            }
+
+            let factorial = 1;
+            for (let i = 1; i <= numero; i++) {
+                factorial *= i;
+            }
+
+            document.getElementById('resultado').innerText = `El factorial de ${numero} es: ${factorial}`;
+        }
+    </script>
+</body>
+</html>

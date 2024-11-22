@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Verificar Palíndromo</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f0f8ff;
+            color: #333;
+            text-align: center;
+        }
+        h1 {
+            color: #0074d9;
+        }
+        .container {
+            margin-top: 50px;
+        }
+        input[type="text"], button {
+            padding: 10px;
+            font-size: 16px;
+            margin: 5px;
+        }
+        input[type="text"] {
+            width: 300px;
+            border: 2px solid #0074d9;
+            border-radius: 5px;
+        }
+        button {
+            background-color: #0074d9;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        button:hover {
+            background-color: #005f99;
+        }
+        #resultado {
+            margin-top: 20px;
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+    <h1>¿Es un Palíndromo?</h1>
+    <div class="container">
+        <input type="text" id="cadena" placeholder="Escribe una palabra o frase">
+        <button onclick="verificarPalindromo()">Verificar</button>
+        <div id="resultado"></div>
+    </div>
+    <div class="back-button">
+        <button onclick="history.back()">Regresar</button>
+    </div>
+
+
+    <script>
+        function verificarPalindromo() {
+            const cadena = document.getElementById("cadena").value.toLowerCase().replace(/[^a-z0-9]/g, '');
+            const reverso = cadena.split('').reverse().join('');
+            const esPalindromo = cadena === reverso;
+
+            const resultado = document.getElementById("resultado");
+            if (esPalindromo) {
+                resultado.textContent = "¡Es un palíndromo!";
+                resultado.style.color = "green";
+            } else {
+                resultado.textContent = "No es un palíndromo.";
+                resultado.style.color = "red";
+            }
+        }
+    </script>
+</body>
+</html>

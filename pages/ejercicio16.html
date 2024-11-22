@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Ejercicio 16 - Tienda de Electrodomésticos</title>
+  <style>
+    /* Estilos generales */
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: Arial, sans-serif;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 100vh;
+      background-color: #f0f4f8;
+      color: #333;
+    }
+
+    main {
+      background: #ffffff;
+      padding: 30px;
+      border-radius: 12px;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+      max-width: 400px;
+      width: 100%;
+      transition: transform 0.3s ease;
+    }
+
+    main:hover {
+      transform: translateY(-5px);
+    }
+
+    h1 {
+      font-size: 1.8rem;
+      text-align: center;
+      margin-bottom: 20px;
+      color: #007acc;
+    }
+
+    /* Estilos del formulario */
+    form {
+      display: flex;
+      flex-direction: column;
+      gap: 15px;
+    }
+
+    form div {
+      display: flex;
+      flex-direction: column;
+    }
+
+    label {
+      font-weight: bold;
+      margin-bottom: 5px;
+      font-size: 1rem;
+    }
+
+    input[type="number"],
+    input[type="text"],
+    textarea {
+      padding: 10px;
+      border: 2px solid #ddd;
+      border-radius: 8px;
+      font-size: 1rem;
+      transition: border-color 0.3s ease;
+    }
+
+    input[type="number"]:focus,
+    input[type="text"]:focus,
+    textarea:focus {
+      border-color: #007acc;
+      outline: none;
+    }
+
+    textarea {
+      resize: none;
+      height: 100px;
+      font-family: Arial, sans-serif;
+    }
+
+    /* Botones */
+    button {
+      padding: 12px;
+      font-size: 1rem;
+      font-weight: bold;
+      color: #ffffff;
+      background-color: #007acc;
+      border: none;
+      border-radius: 8px;
+      cursor: pointer;
+      transition: background-color 0.3s ease;
+    }
+
+    button:hover {
+      background-color: #005fa3;
+    }
+
+    button[type="submit"] {
+      background-color: #555;
+    }
+
+    button[type="submit"]:hover {
+      background-color: #333;
+    }
+  </style>
+</head>
+<body>
+  <main>
+    <h1>Calculadora de Descuentos</h1>
+    <ul>
+      <li>Para televisores, si se compran 2 o más unidades, se ofrece un descuento del 10%.</li>
+      <li>Para refrigeradoras, si se compran más de 3 unidades, se ofrece un descuento del 15%.</li>
+      <li>Si el monto total antes de los descuentos supera los $2,000, se ofrece un descuento adicional del 5%.</li>
+    </ul>
+    <form action="./simulador.html">
+      <div>
+        <label for="producto">Producto</label>
+        <input type="text" id="producto" placeholder="Ingresa el producto (televisor, refrigeradora)">
+      </div>
+      <div>
+        <label for="cantidad">Cantidad</label>
+        <input type="number" id="cantidad" placeholder="Ingresa la cantidad">
+      </div>
+      <div>
+        <label for="precio">Precio por unidad</label>
+        <input type="number" id="precio" placeholder="Ingresa la cantidad (unidad) a llevar">
+      </div>
+      <div>
+        <label for="total">Monto Total</label>
+        <textarea id="total" placeholder="Aquí va la respuesta" readonly></textarea>
+      </div>
+      <button type="button" onclick="calcularTotal()">Calcular</button>
+      <div style="text-align: center; margin-top: 20px;">
+        <a href="javascript:history.back()" style="padding: 10px 20px; font-size: 16px; background-color: #808080; color: white; text-decoration: none; border-radius: 5px; display: inline-block;">
+            Regresar
+        </a>
+    </div>
+    
+    </form>
+  </main>
+  <script src="../js/simulador.js"></script>
+</body>
+</html>

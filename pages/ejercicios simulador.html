@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Simulador ejercicios</title>
+    <style>
+        /* Estilos generales */
+        body {
+          font-family: Arial, sans-serif;
+          background-color: #f0f2f5;
+          margin: 0;
+          padding: 20px;
+        }
+  
+        h1 {
+          text-align: center;
+          color: #333;
+          margin-bottom: 20px;
+        }
+  
+        /* Contenedor de las tarjetas */
+        .grid {
+          display: flex;
+          flex-wrap: wrap;
+          gap: 20px;
+          justify-content: center;
+          max-width: 1200px;
+          margin: 0 auto;
+        }
+  
+        /* Estilos de las tarjetas */
+        .card {
+          flex: 1 1 calc(20% - 20px); /* Ajuste para 5 tarjetas por fila */
+          background-color: #ffffff;
+          border-radius: 8px;
+          box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+          padding: 20px;
+          text-align: center;
+          transition: transform 0.3s;
+          min-height: 180px;
+        }
+  
+        .card:hover {
+          transform: translateY(-5px);
+        }
+  
+        .card h3 {
+          color: #333;
+          margin-bottom: 10px;
+          font-size: 1.2em;
+        }
+  
+        .card p {
+          font-size: 0.9em;
+          color: #666;
+          margin-bottom: 15px;
+          line-height: 1.4;
+        }
+  
+        .card a {
+          display: inline-block;
+          padding: 8px 12px;
+          background-color: #007bff;
+          color: #ffffff;
+          text-decoration: none;
+          border-radius: 4px;
+          font-weight: bold;
+          transition: background-color 0.3s;
+        }
+  
+        .card a:hover {
+          background-color: #0056b3;
+        }
+      </style>
+    
+</head>
+<body>
+    <h1>Ejercicios simulador</h1>
+    <div class="grid">
+        <!-- 40 Tarjetas (5 por fila, 8 filas en total) -->
+        <!-- Fila 1 -->
+        <div class="card">
+          <h3>Ejercicio 1</h3>
+          <p></p>
+          <a href="../pages/ejercicio11.html"
+            >Escribe un algoritmo como función en Pseint o Javascript que genere 10 números y los almacene en un arreglo. Luego recórrelo y presenta el promedio de los números pares del arreglo</a>
+        </div>
+        <div class="card">
+          <h3>Ejercicio 2</h3>
+          <p>Escribe un programa que pida al usuario una frase y cuente cuántas palabras tiene. Usa un bucle para recorrer cada letra de la palabra y verificar si es una vocal.</p>
+          <a href="ejercicio12.html">Ver Ejercicio</a>
+        </div>
+        <div class="card">
+          <h3>Ejercicio 3</h3>
+          <p>Crea una funcion en Pseint o Javascript que imprima todos los números del 1 al 50 que sean divisibles por 3 y 7. y al final muestre la suma de los numeros pares y la suma de los impares. Usa un bucle para iterar a través de los números y condiciones para verificar la divisibilidad</p>
+          <a href="ejercicio13.html">Ver Ejercicio</a>
+        </div>
+        <div class="card">
+          <h3>Ejercicio 4</h3>
+          <p>Escribe un algoritmo como función en Pseint o Javascript que pida al usuario una frase y cuente cuántos dígitos tiene. Usa un bucle para recorrer cada caracter de la palabra y verificar si es un dígito</p>
+          <a href="ejercicio14.html">Ver Ejercicio</a>
+        </div>
+        <div class="card">
+          <h3>Ejercicio 5</h3>
+          <p>Crea un algoritmo como función en Pseint o Javascript que permite presentar los divisores un número cualquiera excluido el propio número.</p>
+          <a href="ejercicio15.html">Ver Ejercicio</a>
+        </div>
+    
+        <div class="card">
+          <h3>Ejercicio 6</h3>
+          <p>Una tienda de electrodomésticos tiene un sistema de precios especiales dependiendo del producto y la cantidad comprada</p>
+          <a href="ejercicio16.html">Ver Ejercicio</a>
+        </div>
+        <div class="card">
+          <h3>Ejercicio 7</h3>
+          <p>Crea un algoritmo como función en Pseint o Javascript que permite verificar si un número cualquiera es perfecto o no.</p>
+          <a href="ejercicio17.html">Ver Ejercicio</a>
+        </div>
+        <div class="card">
+          <h3>Ejercicio 8</h3>
+          <p>Un restaurante que ofrece diferentes promociones dependiendo del día de la semana y el número de personas en la mesa. Se requiere un algoritmo como funcion en Pseint o Javascript que determine el total de la factura</p>
+          <a href="ejercicio18.html">Ver Ejercicio</a>
+        </div>
+        <div class="card">
+          <h3>Ejercicio 9</h3>
+          <p>Dado un número, almacena sus dígitos en un arreglo y luego recorre el arreglo presentando la suma de esos dígitos.</p>
+          <a href="ejercicio19.html">Ver Ejercicio</a>
+          </div>
+      <div>
+          <div style="display: flex; justify-content: center; gap: 10px; margin-top: 20px;">
+            <button onclick="history.back()" style="padding: 10px 20px; font-size: 16px; background-color: #0074d9; color: white; border: none; border-radius: 5px; cursor: pointer;">
+                Regresar
+              </div>
+        
+</body>
+</html>

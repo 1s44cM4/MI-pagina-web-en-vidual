@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Formulario de Venta con JSON</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+</head>
+<body>
+  <div class="container my-5">
+    <h2 class="mb-4 text-center">Formulario de Venta</h2>
+    <!-- Formulario de Venta -->
+    <div class="card p-4 mb-4">
+      <form id="ventaForm">
+        <div class="mb-3">
+          <label for="cliente" class="form-label">Cliente</label>
+          <input type="text" id="cliente" class="form-control" placeholder="Ingrese el nombre del cliente" required>
+        </div>
+
+        <div class="row">
+          <div class="col-md-6 mb-3">
+            <label for="producto" class="form-label">Producto</label>
+            <select id="producto" class="form-select" onchange="actualizarPrecio()">
+              <option value="0" data-precio="0">Seleccione un producto</option>
+              <!-- Las opciones se cargarán dinámicamente desde el JSON -->
+            </select>
+          </div>
+
+          <div class="col-md-3 mb-3">
+            <label for="precio" class="form-label">Precio</label>
+            <input type="text" id="precio" value="" class="form-control" readonly>
+          </div>
+
+          <div class="col-md-3 mb-3">
+            <label for="cantidad" class="form-label">Cantidad</label>
+            <input type="number" id="cantidad" class="form-control" min="1" value="1">
+          </div>
+        </div>
+
+        <button type="button" class="btn btn-primary" onclick="agregarProducto()">Añadir Producto</button>
+      </form>
+    </div>
+
+    <!-- Tabla de productos agregados -->
+    <div class="card p-4">
+      <h4>Productos en la Factura</h4>
+      <table class="table table-striped mt-3">
+        <thead>
+          <tr>
+            <th>Producto</th>
+            <th>Precio Unitario</th>
+            <th>Cantidad</th>
+            <th>Subtotal</th>
+          </tr>
+        </thead>
+        <tbody id="tablaProductos">
+          <!-- Los productos agregados se mostrarán aquí -->
+        </tbody>
+      </table>
+
+      <div class="text-end">
+        <h5>Total Factura: $<span id="totalFactura">0.00</span></h5>
+      </div>
+    </div>
+  </div>
+
+  <script>
+   
+    let totalFactura = 0;
+
+    // Función para cargar productos desde el JSON
+    function cargarProductos() {
+      fetch('productos.json')
+        .then(response => response.json())
+        .then(data => {
+          const selectProducto = document.getElementById("producto");
+          data.forEach(producto => {
+            const option = document.createElement("option");
+            option.value = producto.nombre;
+            option.text = `${producto.nombre} - $${producto.precio}`;
+            option.setAttribute("data-precio", producto.precio);
+            selectProducto.appendChild(option);
+          });
+        })
+        .catch(error => console.error("Error al cargar productos:", error));
+    }
+
+    // Llamar a la función al cargar la página
+    window.onload = cargarProductos;
+
+    // Función para actualizar el precio cuando se selecciona un producto
+    function actualizarPrecio() {
+      const producto = document.getElementById("producto");
+      const precio = producto.options[producto.selectedIndex].getAttribute("data-precio");
+      document.getElementById("precio").value = precio;
+    }
+
+    // Función para añadir un producto a la tabla
+    function agregarProducto() {
+      const producto = document.getElementById("producto").value;
+      const precio = parseFloat(document.getElementById("precio").value);
+      const cantidad = parseInt(document.getElementById("cantidad").value);
+
+      if (producto === "0" || isNaN(precio) || cantidad < 1) {
+        alert("Seleccione un producto y una cantidad válida.");
+        return;
+      }
+
+      const subtotal = precio * cantidad;
+      totalFactura += subtotal;
+
+      const fila = `<tr>
+                      <td>${producto}</td>
+                      <td>$${precio.toFixed(2)}</td>
+                      <td>${cantidad}</td>
+                      <td>$${subtotal.toFixed(2)}</td>
+                    </tr>`;
+
+      document.getElementById("tablaProductos").innerHTML += fila;
+      document.getElementById("totalFactura").textContent = totalFactura.toFixed(2);
+
+      // Limpiar campos después de agregar
+      document.getElementById("producto").value = "0";
+      document.getElementById("precio").value = "";
+      document.getElementById("cantidad").value = "1";
+    }
+  </script>
+</body>
+</html>
